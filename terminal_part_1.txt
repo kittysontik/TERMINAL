@@ -1,0 +1,117 @@
+First Homework
+@kittysontik
+
+1. Посмотреть где я - pwd (print working directory)
+
+2. Создать папку - mkdir <name> (make directory + название директории)
+
+3. Зайти в папку - cd <name> (change directory + название папки)
+
+4. Создать 3 папки - mkdir <first_dir> <second_dir> <third_dir>
+
+5. Зайти в любую папку - change directory и ввести путь, например: cd <first_dir>
+
+6. Создать 5 файлов (3 txt, 2 json) - touch new_file.txt peace.txt sky.txt sun.json moon.json (в названии файлов указать их расширение)
+
+7. Создать 3 папки - mkdir <folder1> <folder2> <folder3>
+
+8. Вывести список содержимого папки - ls -al <folder_name> (list, flags -a вывести скрытые файлы и директории, -l вывести дополнительную информацию по каждому файлу)
+
+9. Открыть любой txt файл - cat >> new_file.txt (после нажатия Enter открывается редактор)
+
+10. Написать туда что-нибудь, любой текст - написать текст
+
+11. Сохранить и выйти - нажать Enter для сохранения, нажать ctrl+C для выхода
+
+12. Выйти из папки на уровень выше - cd ..
+
+13. Переместить любые 2 файла, которые вы создали, в любую другую папку - mv newfile.txt newfile.json ~/QACourse/group_30/new_dir (move + названия файлов + указать путь до папки)
+
+14. Скопировать любые 2 файла, которые вы создали, в любую другую папку - cp love.txt moon.json ~/QACourse/group_30/qa_1 (copy + файлы + путь до папки)
+
+15. Найти файл по имени - find ~/QACourse -name qa.txt (find + указать, с какого каталога начать поиск + критерий + имя файла)
+
+16. Просмотреть содержимое в реальном времени (команда grep) изучите как она работает. - tail -f /c/xampp/apache/logs/access.log 
+(tail - посмотреть последние 10 строк файла, -f - обновлять информацию по мере появления новых строк в файле, ctrl + C - выйти) 
+grep search-term /path/to/file - посмотреть определенную подстроку в файле 
+Например, tail -f /var/log/auth.log | grep Invalid user - смотреть появление подстроки 'Invalid user' в реальном времени
+
+17. Вывести несколько первых строк из текстового файла - head -n file_name.txt (команда head по умолчанию выводит первые 10 строк файла, флаг -n указать количество строк + имя файла)
+
+18. Вывести несколько последних строк из текстового файла - tail -n file_name.txt (команда tail по умолчанию выводит последние 10 строк файла, рядом с -n указать количество строк)
+
+19. Просмотреть содержимое длинного файла (команда less) изучите как она работает. - less file_name (команда less - пейджер, грузит только ту часть, которая помещается на экран и при перемещении подгружает остальное
+q - выход, f - вперед на страницу, b - назад на страницу, клавиши 'вверх' 'вниз' перемещение по строкам, / + words + enter - поиск введенного текста, n, N - перемещение по совпадениям)
+
+20. Вывести дату и время - ввести команду date 
+
+Задание *
+
+1. Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request - ввести команду curl + URL 
+
+$ curl http://162.55.220.72:5005/terminal-hw-request
+
+Результат:
+
+ {
+  "Intro": "Hello!! This is your the first response from server",
+  "Tasks": {
+    "Task_1": "Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)",
+    "result": [
+      "Your_String",
+      "Your_number"
+    ]
+  }
+}
+
+$ curl -v <http://162.55.220.72:5005/get_method?name=Kitty\&age=24>
+
+Результат: 
+
+[
+  "Kitty",
+  "24"
+]
+
+2. Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+#!/bin/bash
+
+# Для выполнения скрипта с любого устройства - первоначально создадим директорию
+mkdir test_dir
+
+# 3
+sleep 2
+echo "Заходим в директорию test_dir"
+cd test_dir
+
+# 4
+sleep 2
+echo "Создаем 3 директории first_dir, second_dir и third_dir"
+mkdir first_dir second_dir third_dir
+
+# 5
+sleep 2
+echo "Заходим в директорию first_dir"
+cd first_dir
+
+# 6
+sleep 2
+echo "Создаем 5 файлов, 3 txt, 2 json"
+touch first_file.txt second_file.txt third_file.json fourth_file.json fifth_file.txt
+
+# 7
+sleep 2
+echo "Создаем 3 директории my_dir, your_dir и our_dir"
+mkdir my_dir your_dir our_dir
+
+# 8
+sleep 2
+echo "Выводим список содержимого директории"
+ls -alh
+
+# 13
+sleep 2
+echo "Перемещаем third_file.json и fifth_file.txt в директорию my_dir"
+mv third_file.json fifth_file.txt my_dir
